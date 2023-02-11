@@ -1,0 +1,20 @@
+#welcome-box {
+    width: 40%;
+    background: #945ff5;
+    box-shadow: inset -35px -35px 70px #ffed63,
+        inset 35px 35px 70px #ed98ff;
+}
+
+#welcome-text {
+    font-size: 80px;
+    font-family: 'Fredoka One', cursive;
+    font-weight: bolder;
+}
+
+#login-box {
+    width: 40%;
+}
+
+form {
+    width: 80%;
+}
