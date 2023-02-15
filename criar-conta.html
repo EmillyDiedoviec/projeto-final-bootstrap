@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-Br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadastro</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
 
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/criar-conta.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,11 +36,11 @@
                         class="col-xs-12 col-md-6 col-lg-4 rounded-end-4 d-flex align-items-center h-75 bg-white flex-column"
                         id="login-box">
                         <h2 class="align-items-start fw-light h1" id="login-text">
-                            Login
+                            Cadastro
                         </h2>
 
                         <form class="mt-4 w-100 d-flex justify-content-center align-items-start mt-2 needs-validation"
-                        novalidate id="formLogin">
+                            novalidate id="formCadastro">
                             <div class="d-flex flex-column justify-content-center w-75">
                                 <div class="mb-3">
                                     <input type="email" class="form-control" id="email" required
@@ -56,14 +56,20 @@
                                     <div class="invalid-feedback">É necessário uma senha.</div>
                                 </div>
 
-                                <button type="submit" id="entrar" class="btn btn-primary p-3 mt-2">Entrar</button>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" id="repitaSenha" required
+                                        placeholder="Digite sua senha novamente:">
+
+                                    <div class="invalid-feedback">É necessário que confirme a senha.</div>
+                                </div>
+                                <button type="submit" id="entrar" class="btn btn-primary p-3 mt-2">Cadastrar</button>
                             </div>
                         </form>
 
                         <section class="mt-2">
                             <p>
-                                Ainda não possui uma conta? 
-                                <a class="text-decoration-none" href="./criar-conta.html">Crie uma aqui</a>
+                                Já possui uma conta?
+                                <a class="text-decoration-none" href="./login.html">Faça o login aqui</a>
                             </p>
                         </section>
                     </section>
@@ -72,10 +78,10 @@
     </section>
     </main>
 
-    <div id="toast-login" class="toast align-items-center border-0 position-fixed toast-position fs-3" role="alert"
-        aria-live="assertive" aria-atomic="true" id="feedback">
+    <div id="toast-cadastro" class="toast align-items-center border-0 position-fixed toast-position" role="alert"
+        aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body" id="alerta-login"></div>
+            <div class="toast-body" id="alerta-cadastro"></div>
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
                 aria-label="Close"></button>
         </div>
@@ -85,7 +91,7 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
 
-    <script src="./js/login.js"></script>
+    <script src="./js/criar-conta.js"></script>
 
 </body>
 
