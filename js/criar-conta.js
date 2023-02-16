@@ -30,10 +30,10 @@ formHTML.addEventListener('submit', (evento) => {
         recados: []
     }
 
-    const existe = listaUsuarios.some((valor) => valor.email === novoUsuario.email)
+    const existe = listaUsuarios.some((valor) => valor.email === emailInp)
 
     if (existe) {
-        feedback("danger", "⚠️¡Erro! - E-mail já cadastrado!⚠️")
+        feedback("danger", "⚠️¡Erro! - E-mail já cadastrado!")
         formHTML.reset()
         return
     }
@@ -42,7 +42,9 @@ formHTML.addEventListener('submit', (evento) => {
     guardarNoLocalStorage('usuarios', listaUsuarios)
     formHTML.reset()
 
-    feedback("success", "🥳 Conta criada com sucesso! 🥳")
+    if (novoUsuario) {
+        feedback("success", "🥳 Conta criada com sucesso!")
+    }
 })
 
 function feedback(tipo, msg) {

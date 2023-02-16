@@ -1,30 +1,25 @@
-*{
+* {
     overflow: hidden;
 }
 
 #welcome-box {
-    width: 40%;
     background: #945ff5;
     box-shadow: inset -35px -35px 70px #ffed63,
         inset 35px 35px 70px #ed98ff;
 }
 
 #welcome-text {
-    font-size: 80px;
     font-family: 'Fredoka One', cursive;
 }
 
-#login-box {
-    width: 40%;
-}
 
 #login-text {
-    margin-top: 150px;
     font-family: 'Fredoka One', cursive;
 }
 
 #email,
-#senha {
+#senha,
+#repitaSenha {
     line-height: 28px;
     border: 2px solid transparent;
     border-bottom-color: #777;
@@ -38,7 +33,9 @@
 #email:focus,
 #email:hover,
 #senha:focus,
-#senha:hover {
+#senha:hover,
+#repitaSenha:focus,
+#repitaSenha:hover {
     outline: none;
     padding: .3rem;
     border-radius: 1rem;
@@ -46,12 +43,14 @@
 }
 
 #email::placeholder,
-#senha::placeholder {
+#senha::placeholder,
+#repitaSenha::placeholder {
     color: #777;
 }
 
 #email:focus::placeholder,
-#senha:focus::placeholder {
+#senha:focus::placeholder,
+#repitaSenha:focus::placeholder {
     opacity: 0;
     transition: opacity .3s;
 }
@@ -103,12 +102,20 @@ p {
     font-size: 17px;
 }
 
-a{
+a {
     color: #3f00b5;
 }
-/* #boxes {
-    animation: bounce-in-right 2s ease;
+
+.toast-position {
+    top: 30px;
+    right: 50px;
 }
+
+#box {
+    animation: bounce-in-right 2s ease;
+} 
+
+
 
 @keyframes bounce-in-right {
     0% {
@@ -128,4 +135,4 @@ a{
     100% {
         transform: translateY(0);
     }
-} */
+} 

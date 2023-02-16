@@ -1,22 +1,125 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recados</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/recados.css">
 </head>
-<body>
-    
 
+<body class="bg-dark">
+    <main class="vh-100 vw-100">
+        <nav class="navbar" id="header">
+            <div class="container-fluid row mt-4">
+                <div class="col-5 ms-4">
+                    <h2 class="navbar-text h1 fs-2 text-white float-start" id="welcome">Bem-vindo(a) aos seus recados
+                    </h2>
+                </div>
+                <div class="col-1">
+                    <button onclick="sair()" class="btn float-end">
+                        <img src="./images/icons8-logout-64.png" alt="Sair" />
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <section class="container-fluid d-flex justify-content-center align-items-center mt-4">
+            <section class="row vw-100 vh-75">
+                <table class="table table-dark table-striped w-100 h-100 table-responsive-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">N°</th>
+                            <th scope="col">Nota</th>
+                            <th scope="col">Detalhamento</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="recados">
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+
+        <!--Modal criar-->
+        <button class="btn btn-dark rounded-circle float-button float-end " id="criar" data-bs-toggle="modal"
+            data-bs-target="#modalCriar">
+            <i class="bi bi-plus-lg"></i>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalCriar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Criar um novo recado:</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form class="needs-validation" novalidate id="formModal">
+                            <div class="col mb-3">
+                                <input type="text" class="inputModal w-100" id="recado" minlength="3" required placeholder="Digite seu recado:">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <input type="text" class="inputModal w-100" id="detalhamento" minlength="2" required placeholder="Digite o detalhamento do recado:">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn text-white" id="btnSalvar">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 
+        <nav class="navbar fixed-bottom d-flex justify-content-center" id="footer">
+            <div class="container-fluid flex-row w-25 d-flex justify-content-center">
+
+                <div class="col-2 px-2">
+                    <a href="https://github.com/EmillyDiedoviec" target="_blank">
+                        <img id="iconGithub" src="./images/icons8-github-64.png" alt="">
+                    </a>
+                </div>
+
+                <div class="col-2 px-2">
+                    <a href="https://www.linkedin.com/in/emilly-diedoviec-b2944b254/" target="_blank">
+                        <img id="iconLinkedin" src="./images/icons8-linkedin-64.png" alt="">
+                    </a>
+                </div>
+
+                <div class="col-2 px-2">
+                    <a href="https://www.instagram.com/emilly_diedoviec/" target="_blank">
+                        <img id="iconInstagram" src="./images/icons8-instagram-64.png" alt="">
+                    </a>
+                </div>
+
+            </div>
+        </nav> -->
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 
     <script src="./js/recados.js"></script>
 </body>
+
 </html>

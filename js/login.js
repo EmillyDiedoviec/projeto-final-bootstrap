@@ -20,7 +20,7 @@ formHTML.addEventListener('submit', (evento) => {
     );
 
     if (!usuarioEncontrado) {
-        feedback("danger", "Usuario ou senha inválidos ou não existem 😵‍💫 Verique se os mesmos estão corretos!")
+        feedback("danger", "😵‍💫 Verique se o E-mail ou a senha estão corretos!")
         formHTML.reset()
     } else {
         guardarNoLocalStorage('usuarioLogado', usuarioEncontrado)

@@ -1,0 +1,71 @@
+main {
+    animation: cor 7s infinite ease-in-out;
+}
+
+@keyframes cor {
+    0% {
+        background-color: #32008d94;
+    }
+
+    25%{
+        background-color: #b271bfb4;
+    }
+
+    50%{
+        background-color: #8149e2a0;
+    }
+
+    100% {
+        background-color: #32008d94;
+    }
+}
+
+#welcome{
+    font-family: 'Fredoka One', cursive;
+}
+
+#header{
+    background: linear-gradient(180deg, #0e0e0e, rgba(255, 255, 255, 0));
+}
+
+#criar{
+    height: 70px;
+    width: 70px;
+}
+
+#btnSalvar{
+    background-color: #8149e2;
+
+}
+
+.inputModal {
+    line-height: 28px;
+    border: 2px solid transparent;
+    border-bottom-color: #777;
+    padding: .2rem 0;
+    outline: none;
+    background-color: transparent;
+    color: #0d0c22;
+    transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.inputModal:focus,
+.inputModal:hover {
+    outline: none;
+    padding: .3rem;
+    border-radius: 1rem;
+    border-color: #945ff5;
+}
+
+.inputModal::placeholder {
+    color: #777;
+}
+
+.inputModal:focus::placeholder {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+#footer{
+    background: linear-gradient(0deg, #0e0e0e, rgba(255, 255, 255, 0));
+}

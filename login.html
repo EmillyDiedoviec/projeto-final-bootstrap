@@ -20,59 +20,62 @@
 </head>
 
 <body class="bg-dark">
-    <div class="container-fluid vh-100 vw-100 ">
-        <main class="container h-100">
-            <section class="row h-100 justify-content-center">
-                <div class="col d-flex h-100 w-100 justify-content-center align-items-center" id="boxes">
-                    <section
-                        class="col-xs-12 col-md-6 col-lg-4 col-lg-2 rounded-start-4 d-flex ps-4 align-items-center h-75"
-                        id="welcome-box">
-                        <h2 class="text-white fw-bolder" id="welcome-text">
-                            WELCOME <br> BACK!
-                        </h2>
-                    </section>
+    <main class="container-fluid vh-100 vw-100 align-items-center d-flex justify-content-center">
+        <div class="row w-75 h-75 bg-white rounded-5 pt-3 pb-3" id="box">
 
-                    <section
-                        class="col-xs-12 col-md-6 col-lg-4 rounded-end-4 d-flex align-items-center h-75 bg-white flex-column"
-                        id="login-box">
-                        <h2 class="align-items-start fw-light h1" id="login-text">
-                            Login
-                        </h2>
+            <div class="col-12 col-md-6">
+                <section
+                class="col-12 d-flex d-flex justify-content-center align-items-center h-100 w-100 mb-md-5 rounded-5"
+                id="welcome-box">
+                    <h2 class="h1 fs-1 text-white fw-bolder" id="welcome-text">
+                        WELCOME BACK!
+                    </h2>
+                </section>
+            </div>
 
-                        <form class="mt-4 w-100 d-flex justify-content-center align-items-start mt-2 needs-validation"
+            <div class="col-12 col-md-6 mt-md-5">
+                <section
+                    class="d-flex align-items-center h-100 w-100 flex-column d-flex justify-content-center"
+                    id="login-box">
+                    <h2 class="align-items-start fw-light h1 pb-2" id="login-text">
+                        Login
+                    </h2>
+
+                    <form class="mt-4 w-100 d-flex justify-content-center align-items-start mt-2 needs-validation"
                         novalidate id="formLogin">
-                            <div class="d-flex flex-column justify-content-center w-75">
-                                <div class="mb-3">
-                                    <input type="email" class="form-control" id="email" required
-                                        placeholder="Digite seu E-mail:">
+                        <div class="d-flex flex-column justify-content-center w-75">
+                            <div class="mb-3">
+                                <input type="email" class="form-control" id="email" required
+                                    placeholder="Digite seu E-mail:">
 
-                                    <div class="invalid-feedback">É necessário um E-mail.</div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <input type="password" class="form-control" id="senha" required
-                                        placeholder="Digite sua senha:">
-
-                                    <div class="invalid-feedback">É necessário uma senha.</div>
-                                </div>
-
-                                <button type="submit" id="entrar" class="btn btn-primary p-3 mt-2">Entrar</button>
+                                <div class="invalid-feedback">É necessário um E-mail.</div>
                             </div>
-                        </form>
 
-                        <section class="mt-2">
-                            <p>
-                                Ainda não possui uma conta? 
-                                <a class="text-decoration-none" href="./criar-conta.html">Crie uma aqui</a>
-                            </p>
-                        </section>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" id="senha" required
+                                    placeholder="Digite sua senha:">
+
+                                <div class="invalid-feedback">É necessário uma senha.</div>
+                            </div>
+
+                            <button type="submit" id="entrar" class="btn btn-primary p-3 mt-2">Cadastrar</button>
+                        </div>
+                    </form>
+
+                    <section>
+                        <p class="fs-4 text-center">
+                            Ainda não possui uma conta? 
+                            <br class="d-lg-block d-xl-none">
+                            <a class="text-decoration-none" href="./criar-conta.html">Crie uma aqui</a>
+                        </p>
                     </section>
-                </div>
-    </div>
-    </section>
+
+                </section>
+            </div>
+        </div>
     </main>
 
-    <div id="toast-login" class="toast align-items-center border-0 position-fixed toast-position fs-3" role="alert"
+    <div id="toast-login" class="toast align-items-center border-0 position-fixed toast-position fs-5" role="alert"
         aria-live="assertive" aria-atomic="true" id="feedback">
         <div class="d-flex">
             <div class="toast-body" id="alerta-login"></div>
