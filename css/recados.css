@@ -7,11 +7,11 @@ main {
         background-color: #32008d94;
     }
 
-    25%{
+    25% {
         background-color: #b271bfb4;
     }
 
-    50%{
+    50% {
         background-color: #8149e2a0;
     }
 
@@ -20,20 +20,32 @@ main {
     }
 }
 
-#welcome{
+#welcome {
     font-family: 'Fredoka One', cursive;
 }
 
-#header{
+#header {
     background: linear-gradient(180deg, #0e0e0e, rgba(255, 255, 255, 0));
 }
 
-#criar{
+#criar {
     height: 70px;
     width: 70px;
+    animation: glow 1s infinite alternate;
 }
 
-#btnSalvar, #btnSalvarAtz{
+@keyframes glow {
+    from {
+        box-shadow: 0 0 15px -15px #c4a1ff;
+    }
+
+    to {
+        box-shadow: 0 0 15px 15px #c4a1ff;
+    }
+}
+
+#btnSalvar,
+#btnSalvarAtz {
     background-color: #8149e2;
 
 }
@@ -66,6 +78,27 @@ main {
     transition: opacity .3s;
 }
 
-#footer{
+#footer {
     background: linear-gradient(0deg, #0e0e0e, rgba(255, 255, 255, 0));
+}
+
+
+table {
+    animation: bounceIn 2s ease;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }

@@ -166,7 +166,7 @@ function salvarRecados() {
     const listaUsuarios = buscarDadosDoLocalStorage('usuarios')
     const acharUsuario = listaUsuarios.findIndex((valor) => valor.email === usuarioLogado.email)
 
-    listaUsuarios[acharUsuario].notas = listaRecados
+    listaUsuarios[acharUsuario].recados = listaRecados
 
     guardarNoLocalStorage('usuarios', listaUsuarios)
 }
