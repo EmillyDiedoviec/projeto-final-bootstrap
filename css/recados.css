@@ -33,7 +33,7 @@ main {
     width: 70px;
 }
 
-#btnSalvar{
+#btnSalvar, #btnSalvarAtz{
     background-color: #8149e2;
 
 }

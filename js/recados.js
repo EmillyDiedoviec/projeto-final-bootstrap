@@ -61,8 +61,8 @@ formAtualizar.addEventListener('submit', (evento) => {
     const recadoAtz = document.getElementById('recadoAtualizar').value
     const detalhamentoAtz = document.getElementById('detalhamentoAtualizar').value
 
-    usuarioLogado.recados[indiceAtualizacao].recado = recadoAtz
-    usuarioLogado.recados[indiceAtualizacao].detalhamento = detalhamentoAtz
+    listaRecados[indiceAtualizacao].recado = recadoAtz
+    listaRecados[indiceAtualizacao].detalhamento = detalhamentoAtz
 
     guardarNoLocalStorage('usuarioLogado', usuarioLogado)
     mostrarRegistroHTML()
@@ -82,16 +82,16 @@ function mostrarRegistroHTML() {
     listaRecados.forEach((valor, indice) => {
         tbody.innerHTML += `
             <tr id="${valor.id}">
-                <td>${indice + 1}</td>
-                <td>${valor.recado}</td>
-                <td>${valor.detalhamento}</td>
+                <td class="ps-3">${indice + 1}</td>
+                <td class="ps-3">${valor.recado}</td>
+                <td class="ps-3">${valor.detalhamento}</td>
 
                 <td>
-                    <button class="btn btn-success m-1" aria-label="Editar" onclick="mostrarModalAtualizar(${indice})">
-                        <i class="bi bi-pencil-square"></i>
+                    <button class="btn btn-success" aria-label="Editar" onclick="mostrarModalAtualizar(${indice})">
+                    <i class="bi bi-pen"></i>
                     </button>
-                    <button class="btn btn-danger m-1" aria-label="Apagar" onclick="mostrarModalExcluir(${indice}, ${valor.id})">
-                        <i class="bi bi-trash3"></i>
+                    <button class="btn btn-danger mx-2" aria-label="Apagar" onclick="mostrarModalExcluir(${indice}, ${valor.id})">
+                        <i class="bi bi-trash3-fill"></i>
                     </button>
                 </td>
             </tr>
@@ -106,7 +106,7 @@ function gerarId() {
 function mostrarModalExcluir(indiceRecado, idRecado) {
     console.log(idRecado)
     modalExcluir.show()
-    const botaoExcluir = document.getElementById('btn-delete')
+    const botaoExcluir = document.getElementById('btnExcluir')
 
     botaoExcluir.setAttribute('onclick', `apagarRecado(${indiceRecado}, ${idRecado})`)
 
@@ -127,14 +127,15 @@ function apagarRecado(indiceRecado, idRecado) {
 
 function mostrarModalAtualizar(indiceRecado) {
     console.log(indiceRecado)
-    const usuarioAtualizar = usuarioLogado.recados[indiceRecado]
+    const usuarioAtualizar = listaRecados[indiceRecado]
 
     modalEditar.show()
-    const recadoAtualizar = document.getElementById('recado-atualizar')
-    const detalhamentoAtualizar = document.getElementById('detalhamento-atualizar')
 
-    recadoAtualizar.value = usuarioAtualizar.recado
-    detalhamentoAtualizar.value = usuarioAtualizar.detalhamento
+    const recadoAtz = document.getElementById('recadoAtualizar')
+    const detalhamentoAtz = document.getElementById('detalhamentoAtualizar')
+
+    recadoAtz.value = usuarioAtualizar.recado
+    detalhamentoAtz.value = usuarioAtualizar.detalhamento
 
     indiceAtualizacao = indiceRecado
 }

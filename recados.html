@@ -33,14 +33,14 @@
         </nav>
 
         <section class="container-fluid d-flex justify-content-center align-items-center mt-4">
-            <section class="row vw-100 vh-75">
-                <table class="table table-dark table-striped w-100 h-100 table-responsive-sm">
+            <section class="row vw-100 vh-75 d-flex justify-content-center">
+                <table class="table table-dark table-striped w-75 h-100 table-responsive-sm">
                     <thead>
                         <tr>
-                            <th scope="col">N°</th>
-                            <th scope="col">Nota</th>
-                            <th scope="col">Detalhamento</th>
-                            <th scope="col"></th>
+                            <th scope="col" class="ps-3">N°</th>
+                            <th scope="col" class="ps-3">Nota</th>
+                            <th scope="col" class="ps-3">Detalhamento</th>
+                            <th scope="col" class="ps-3"></th>
                         </tr>
                     </thead>
                     <tbody id="recados">
@@ -50,7 +50,7 @@
         </section>
 
         <!--Modal novo recado botão-->
-        <button class="btn btn-dark rounded-circle float-button float-end " id="criar" data-bs-toggle="modal"
+        <button class="btn btn-dark rounded-circle float-button float-end fixed-bottom m-4" id="criar" data-bs-toggle="modal"
             data-bs-target="#modalCriar">
             <i class="bi bi-plus-lg"></i>
         </button>
@@ -77,16 +77,9 @@
                                     placeholder="Digite o detalhamento do recado:">
                             </div>
 
-                            <input 
-                            type="button" 
-                            class="btn text-white"
-                            value="Salvar Alterações"
-                            id="btnSalvar">
+                            <input type="submit" class="btn text-white" value="Salvar Alterações" id="btnSalvar">
                         </form>
                     </div>
-<!--                     <div class="modal-footer">
-                        <button type="submit" class="btn text-white" id="btnSalvar">Salvar</button>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -102,11 +95,11 @@
                     </div>
 
                     <div class="modal-body">
-                        <p>Tem certeza que deseja excluir esse recado?</p>
+                        <p>Tem certeza que deseja excluir esse recado? Essa ação não pode ser desfeita!</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger" id="btnExcluir">Excluir</button>
-                        <button type="submit" class="btn text-white">Cancelar</button>
+                        <button type="submit" class="btn btn-danger px-5" id="btnExcluir">Excluir</button>
+                        <button type="submit" class="btn btn-dark text-white" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
             </div>
@@ -123,34 +116,34 @@
                     </div>
 
                     <div class="modal-body">
-                        <form class="needs-validation" novalidate  id="formAtualizar">
+                        <form class="needs-validation" novalidate id="formAtualizar">
                             <div class="col mb-3">
                                 <input type="text" class="inputModal w-100" id="recadoAtualizar" minlength="3" required
                                     placeholder="Digite seu recado atualizado:">
                             </div>
 
                             <div class="mb-3">
-                                <input type="text" class="inputModal w-100" id="detalhamentoAtualizar" minlength="2" required
-                                    placeholder="Digite o detalhamento do recado atualizado:">
+                                <input type="text" class="inputModal w-100" id="detalhamentoAtualizar" minlength="2"
+                                    required placeholder="Digite o detalhamento do recado atualizado:">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn text-white" id="btnSalvar">Salvar</button>
+                        <button type="submit" class="btn text-white px-5" id="btnSalvarAtz">Salvar</button>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <!--toast-->
-        <div id="toastRecados" class="toast align-items-center border-0 position-fixed toast-position fs-5" role="alert"
-        aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body" id="alerta-cadastro"></div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                aria-label="Close"></button>
+        <div id="toastRecados" class="toast align-items-center border-0 fs-5 float-end m-3" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="alerta-cadastro"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
         </div>
-    </div>
 
         <!-- 
         <nav class="navbar fixed-bottom d-flex justify-content-center" id="footer">
