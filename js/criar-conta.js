@@ -1,7 +1,7 @@
 const listaUsuarios = buscarDadosDoLocalStorage('usuario')
 const formHTML = document.getElementById('formCadastro')
 
-const toastCadastro = document.getElementById("toast-cadastro");
+const toastCadastro = document.getElementById("toastCadastro");
 const toastBS = new bootstrap.Toast(toastCadastro);
 
 formHTML.addEventListener('submit', (evento) => {

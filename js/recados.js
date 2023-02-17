@@ -1,29 +1,32 @@
-let indiceAtualizacao = -1
-
 const usuarioLogado = buscarDadosDoLocalStorage('usuarioLogado')
-
-const modalCadastro = new bootstrap.Modal('#modal-criar')
-const modalExcluir = new bootstrap.Modal('#modal-excluir')
-const modalEditar = new bootstrap.Modal('#modal-atualizar')
-
-
-const formCadastro = document.getElementById('form-cadastro')
-const formAtualizar = document.getElementById('form-atualizar')
-
 
 document.addEventListener('DOMContentLoaded', () => {
     if (!usuarioLogado.email) {
         window.location.href = './login.html'
+        return
     } else {
         mostrarRegistroHTML()
     }
 })
 
-formCadastro.addEventListener('submit', (ev => {
-    ev.preventDefault();
+const modalCriar = new bootstrap.Modal('#modalCriar')
+const modalExcluir = new bootstrap.Modal('#modalExcluir')
+const modalEditar = new bootstrap.Modal('#modalAtualizar')
 
-    if (!formCadastro.checkValidity()) {
-        formCadastro.classList.add('was-validated')
+const listaRecados = usuarioLogado.recados
+const formularioHTML = document.getElementById('formModal')
+const formAtualizar = document.getElementById('formAtualizar')
+
+const toastRecados = document.getElementById("toastRecados");
+const toastBS = new bootstrap.Toast(toastRecados);
+
+
+
+formularioHTML.addEventListener('submit', (evento => {
+    evento.preventDefault();
+
+    if (!formularioHTML.checkValidity()) {
+        formularioHTML.classList.add('was-validated')
         return
     }
 
@@ -32,46 +35,69 @@ formCadastro.addEventListener('submit', (ev => {
 
     const novoRecado = {
         id: gerarId(),
-        recado,
-        detalhamento
+        recado: recado,
+        detalhamento: detalhamento
     }
 
-    usuarioLogado.recados.push(novoRecado)
-
+    listaRecados.push(novoRecado)
     guardarNoLocalStorage('usuarioLogado', usuarioLogado)
 
-    modalCadastro.hide()
+    modalCriar.hide()
 
-    formCadastro.classList.remove('was-validated')
-    formCadastro.reset()
-    mostrarRecadosNoHTML()
+    salvarRecados()
+    formularioHTML.classList.remove('was-validated')
+    formularioHTML.reset()
+    mostrarRegistroHTML()
 }))
 
-formAtualizar.addEventListener('submit', (ev) => {
-    ev.preventDefault()
+formAtualizar.addEventListener('submit', (evento) => {
+    evento.preventDefault()
 
     if (!formAtualizar.checkValidity()) {
         formAtualizar.classList.add('was-validated')
         return
     }
 
-    const recadoAtualizado = document.getElementById('recado-atualizar').value
-    const detalhamentoAtualizado = document.getElementById('detalhamento-atualizar').value
+    const recadoAtz = document.getElementById('recadoAtualizar').value
+    const detalhamentoAtz = document.getElementById('detalhamentoAtualizar').value
 
-    usuarioLogado.recados[indiceAtualizacao].recado = recadoAtualizado
-    usuarioLogado.recados[indiceAtualizacao].detalhamento = detalhamentoAtualizado
+    usuarioLogado.recados[indiceAtualizacao].recado = recadoAtz
+    usuarioLogado.recados[indiceAtualizacao].detalhamento = detalhamentoAtz
 
     guardarNoLocalStorage('usuarioLogado', usuarioLogado)
-    mostrarRecadosNoHTML()
+    mostrarRegistroHTML()
 
     modalEditar.hide()
     formAtualizar.classList.remove('was-validated')
     formAtualizar.reset()
-    mostrarAlerta('success', 'Contato atualizado com sucesso!')
-    indiceAtualizacao = -1
-
+    feedback('success', 'Contato atualizado com sucesso!')
 })
 
+
+const tbody = document.getElementById('recados')
+function mostrarRegistroHTML() {
+
+    tbody.innerHTML = ''
+
+    listaRecados.forEach((valor, indice) => {
+        tbody.innerHTML += `
+            <tr id="${valor.id}">
+                <td>${indice + 1}</td>
+                <td>${valor.recado}</td>
+                <td>${valor.detalhamento}</td>
+
+                <td>
+                    <button class="btn btn-success m-1" aria-label="Editar" onclick="mostrarModalAtualizar(${indice})">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button class="btn btn-danger m-1" aria-label="Apagar" onclick="mostrarModalExcluir(${indice}, ${valor.id})">
+                        <i class="bi bi-trash3"></i>
+                    </button>
+                </td>
+            </tr>
+        `
+    })
+}
 
 function gerarId() {
     return new Date().getTime()
@@ -87,7 +113,7 @@ function mostrarModalExcluir(indiceRecado, idRecado) {
 }
 
 function apagarRecado(indiceRecado, idRecado) {
-    usuarioLogado.recados.splice(indiceRecado, 1)
+    listaRecados.splice(indiceRecado, 1)
 
     guardarNoLocalStorage('usuarioLogado', usuarioLogado)
 
@@ -95,7 +121,7 @@ function apagarRecado(indiceRecado, idRecado) {
     trExcluir.remove()
 
     modalExcluir.hide()
-    mostrarAlerta('success', 'Recado excluido com sucesso!')
+    feedback('success', 'Recado excluido com sucesso!')
 
 }
 
@@ -113,30 +139,20 @@ function mostrarModalAtualizar(indiceRecado) {
     indiceAtualizacao = indiceRecado
 }
 
-function mostrarRecadosNoHTML() {
-    const tbody = document.getElementById('lista-recados')
 
-    tbody.innerHTML = ''
+function feedback(tipo, msg) {
+    toastRecados.classList.add(`text-bg-${tipo}`);
+    const espacoMensagem = document.getElementById("alerta-cadastro");
+    espacoMensagem.innerHTML = msg;
 
-    usuarioLogado.recados.forEach((valor, indice) => {
-        tbody.innerHTML += `
-            <tr id="${valor.id}">
-                <td>${indice + 1}</td>
-                <td>${valor.recado}</td>
-                <td>${valor.detalhamento}</td>
-                <td>
-                    <button class="btn btn-success m-1" aria-label="Editar" onclick="mostrarModalAtualizar(${indice})">
-                        <i class="bi bi-pencil-square"></i>
-                    </button>
-                    <button class="btn btn-danger m-1" aria-label="Apagar" onclick="mostrarModalExcluir(${indice}, ${valor.id})">
-                        <i class="bi bi-trash3"></i>
-                    </button>
-                </td>
-            </tr>
-        `
-    })
+    toastBS.show();
+
+    setTimeout(() => {
+        toastBS.hide();
+
+        toastRecados.classList.remove(`text-bg-${tipo}`);
+    }, 5000);
 }
-
 
 
 function sair() {
@@ -146,25 +162,28 @@ function sair() {
 }
 
 function salvarRecados() {
-    const listaUsuario = buscarDadosDoLocalStorage('Lista-Usuarios')
+    const listaUsuarios = buscarDadosDoLocalStorage('usuarios')
+    const acharUsuario = listaUsuarios.findIndex((valor) => valor.email === usuarioLogado.email)
 
+    listaUsuarios[acharUsuario].notas = listaRecados
 
-    const acharUsuario = listaUsuario.findIndex((valor) => valor.email === usuarioLogado.email)
-
-    listaUsuario[acharUsuario].recados = usuarioLogado.recados
-
-    guardarNoLocalStorage('Lista-Usuarios', listaUsuario)
+    guardarNoLocalStorage('usuarios', listaUsuarios)
 }
 
 
 function guardarNoLocalStorage(chave, valor) {
-    localStorage.setItem(chave, JSON.stringify(valor));
+    const valorJSON = JSON.stringify(valor)
 
+    localStorage.setItem(chave, valorJSON)
 }
 
 function buscarDadosDoLocalStorage(chave) {
+    const dadoJSON = localStorage.getItem(chave)
 
-    const resultado = localStorage.getItem(chave)
-
-    return JSON.parse(resultado) ?? []
+    if (dadoJSON) {
+        const listaDados = JSON.parse(dadoJSON)
+        return listaDados
+    } else {
+        return []
+    }
 }

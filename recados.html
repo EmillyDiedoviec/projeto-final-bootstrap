@@ -44,40 +44,94 @@
                         </tr>
                     </thead>
                     <tbody id="recados">
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
                     </tbody>
                 </table>
             </section>
         </section>
 
-        <!--Modal criar-->
+        <!--Modal novo recado botão-->
         <button class="btn btn-dark rounded-circle float-button float-end " id="criar" data-bs-toggle="modal"
             data-bs-target="#modalCriar">
             <i class="bi bi-plus-lg"></i>
         </button>
 
-        <!-- Modal -->
+        <!-- Modal novo recado-->
         <div class="modal fade" id="modalCriar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header bg-dark">
                         <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Criar um novo recado:</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal"
+                            aria-label="Fechar"></button>
                     </div>
 
                     <div class="modal-body">
                         <form class="needs-validation" novalidate id="formModal">
                             <div class="col mb-3">
-                                <input type="text" class="inputModal w-100" id="recado" minlength="3" required placeholder="Digite seu recado:">
+                                <input type="text" class="inputModal w-100" id="recado" minlength="3" required
+                                    placeholder="Digite seu recado:">
                             </div>
-                            
+
                             <div class="mb-3">
-                                <input type="text" class="inputModal w-100" id="detalhamento" minlength="2" required placeholder="Digite o detalhamento do recado:">
+                                <input type="text" class="inputModal w-100" id="detalhamento" minlength="2" required
+                                    placeholder="Digite o detalhamento do recado:">
+                            </div>
+
+                            <input 
+                            type="button" 
+                            class="btn text-white"
+                            value="Salvar Alterações"
+                            id="btnSalvar">
+                        </form>
+                    </div>
+<!--                     <div class="modal-footer">
+                        <button type="submit" class="btn text-white" id="btnSalvar">Salvar</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!--Modal excluir-->
+        <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="titleModalDelete" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h1 class="modal-title fs-5 text-white" id="titleModalDelete">Deseja excluir esse recado?</h1>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal"
+                            aria-label="Fechar"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>Tem certeza que deseja excluir esse recado?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger" id="btnExcluir">Excluir</button>
+                        <button type="submit" class="btn text-white">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Modal atualizar-->
+        <div class="modal fade" id="modalAtualizar" tabindex="-1" aria-labelledby="titleModalUpdate" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h1 class="modal-title fs-5 text-white" id="titleModalUpdate">Atualizar recado</h1>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal"
+                            aria-label="Fechar"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form class="needs-validation" novalidate  id="formAtualizar">
+                            <div class="col mb-3">
+                                <input type="text" class="inputModal w-100" id="recadoAtualizar" minlength="3" required
+                                    placeholder="Digite seu recado atualizado:">
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="text" class="inputModal w-100" id="detalhamentoAtualizar" minlength="2" required
+                                    placeholder="Digite o detalhamento do recado atualizado:">
                             </div>
                         </form>
                     </div>
@@ -87,7 +141,16 @@
                 </div>
             </div>
         </div>
-
+        
+        <!--toast-->
+        <div id="toastRecados" class="toast align-items-center border-0 position-fixed toast-position fs-5" role="alert"
+        aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body" id="alerta-cadastro"></div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
 
         <!-- 
         <nav class="navbar fixed-bottom d-flex justify-content-center" id="footer">
